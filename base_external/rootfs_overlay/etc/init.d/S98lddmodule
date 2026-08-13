@@ -1,0 +1,23 @@
+#!/bin/sh
+
+case "$1" in
+	start)
+		echo "Loading LDD modules"
+		sh /etc/init.d/module_load hello
+		sh /etc/init.d/module_load faulty
+		sh /etc/init.d/module_load scull
+		;;
+		
+	stop)
+		echo "Removing LDD modules"
+		sh /etc/init.d/module_unload hello
+		sh /etc/init.d/module_unload faulty
+		sh /etc/init.d/module_unload scull
+    	;;    
+
+	*)
+		echo "Usage: $0 {start|stop}"
+		exit 1
+		;;
+esac
+exit 0
